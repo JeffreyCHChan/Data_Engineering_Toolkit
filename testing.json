@@ -1,0 +1,85 @@
+{
+  "orderId": "12345",
+  "orderDate": "2024-06-22T14:32:00Z",
+  "customer": {
+    "customerId": "98765",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "+1-555-555-5555",
+    "billingAddress": {
+      "street": "123 Elm St",
+      "city": "Springfield",
+      "state": "IL",
+      "zipCode": "62701",
+      "country": "USA"
+    },
+    "shippingAddress": {
+      "street": "456 Oak St",
+      "city": "Springfield",
+      "state": "IL",
+      "zipCode": "62701",
+      "country": "USA"
+    }
+  },
+  "items": [
+    {
+      "itemId": "A1B2C3",
+      "productName": "Wireless Mouse",
+      "quantity": 2,
+      "unitPrice": 29.99,
+      "totalPrice": 59.98,
+      "attributes": {
+        "color": "Black",
+        "warranty": "2 years"
+      }
+    },
+    {
+      "itemId": "D4E5F6",
+      "productName": "Mechanical Keyboard",
+      "quantity": 1,
+      "unitPrice": 89.99,
+      "totalPrice": 89.99,
+      "attributes": {
+        "switchType": "Cherry MX Brown",
+        "backlight": "RGB"
+      }
+    }
+  ],
+  "payment": {
+    "method": "Credit Card",
+    "transactionId": "TX1234567890",
+    "amount": 149.97,
+    "currency": "USD",
+    "status": "Completed",
+    "billingAddress": {
+      "street": "123 Elm St",
+      "city": "Springfield",
+      "state": "IL",
+      "zipCode": "62701",
+      "country": "USA"
+    }
+  },
+  "shipping": {
+    "method": "Express",
+    "cost": 14.99,
+    "carrier": "UPS",
+    "trackingNumber": "1Z9999999999999999",
+    "estimatedDelivery": "2024-06-25T00:00:00Z",
+    "status": "Shipped"
+  },
+  "discounts": [
+    {
+      "code": "SUMMER20",
+      "amount": 20.00,
+      "description": "20% off summer sale"
+    }
+  ],
+  "orderTotal": {
+    "subtotal": 149.97,
+    "discount": 20.00,
+    "shipping": 14.99,
+    "tax": 13.50,
+    "grandTotal": 158.46
+  },
+  "notes": "Please leave the package at the front door if no one is home."
+}
