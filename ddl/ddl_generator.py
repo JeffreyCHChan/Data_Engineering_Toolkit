@@ -43,7 +43,7 @@ def create_schema(json_structure):
 
     
     
-file_path = "./testing.json"
+file_path = "testing.json"
 
 
 with open(file_path) as json_data:

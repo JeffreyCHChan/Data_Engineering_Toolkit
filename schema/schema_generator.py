@@ -37,7 +37,7 @@ def create_schema(json_structure):
 
     
     
-file_path = "C:\\Users\\206771\\OneDrive - CN\Primary\\206771\\Dev Tools\\helper\\testing.json"
+file_path = "testing.json"
 
 
 with open(file_path) as json_data:
