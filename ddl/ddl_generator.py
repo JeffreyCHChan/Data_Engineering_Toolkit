@@ -2,13 +2,21 @@
 
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, ArrayType, BooleanType, LongType
 import json
+import re
 from pyspark.sql import SparkSession
 
 from pyspark.sql import SparkSession
 
 def infer_data_type(value):
     if isinstance(value, str):
-        return "STRING"
+        if re.search(r"\d{4}-\d{2}-\d{1,2}T\d{1,2}:\d{1,2}:\d{2}(-|\+)\d{1,2}:\d{1,2}", value):
+            return "TIMESTAMP"
+        elif re.search(r"\d{4}-\d{2}-\d{1,2}T\d{1,2}:\d{1,2}:\d{2}", value):
+            return "TIMESTAMP_NTZ"
+        elif re.search(r"\d{4}-\d{2}-\d{1,2}", value):
+            return "DATETIME"
+        else:
+            return "STRING"
     elif isinstance(value, bool):
         return "BOOLEAN"
     elif isinstance(value, int):
@@ -43,8 +51,7 @@ def create_schema(json_structure):
 
     
     
-file_path = "testing.json"
-
+file_path = "resources/testing.json"
 
 with open(file_path) as json_data:
     json_content = json.load(json_data)

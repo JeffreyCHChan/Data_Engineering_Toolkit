@@ -1,12 +1,21 @@
 
 
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, ArrayType, BooleanType, LongType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, ArrayType, BooleanType, LongType, DateType, TimestampType, TimestampNTZType
 import json
+import re
 from pyspark.sql import SparkSession
 
 def infer_data_type(value):
     if isinstance(value, str):
-        return StringType()
+        if re.search(r"\d{4}-\d{2}-\d{1,2}T\d{1,2}:\d{1,2}:\d{2}(-|\+)\d{1,2}:\d{1,2}", value):
+            return TimestampType()
+        elif re.search(r"\d{4}-\d{2}-\d{1,2}T\d{1,2}:\d{1,2}:\d{2}", value):
+            return TimestampNTZType()
+        elif re.search(r"\d{4}-\d{2}-\d{1,2}", value):
+            return DateType()
+        else:
+            return StringType()
+        
     elif isinstance(value, int):
       if abs(value) > 2147483647: # max range of Int a 4 byte value
         return LongType()
@@ -37,7 +46,7 @@ def create_schema(json_structure):
 
     
     
-file_path = "testing.json"
+file_path = "resources/testing.json"
 
 
 with open(file_path) as json_data:
